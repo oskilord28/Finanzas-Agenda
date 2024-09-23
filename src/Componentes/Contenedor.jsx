@@ -1,28 +1,30 @@
-import React, { useState } from 'react';
-import Encabezado from './Encabezado';
-import Formulario from './Formulario';
-import Tabla from './Tabla';
 
-function Contenedor() {
-  const [gastos, setGastos] = useState([]);
 
-  const agregarGasto = (gasto) => {
-    setGastos([...gastos, gasto]);
-  };
+import React,{useState} from "react";
+import Formulario from "./Formulario";
+import Tareas from "./Tareas";
 
-  const eliminarGasto = (index) => {
-    const nuevosGastos = [...gastos];
-    nuevosGastos.splice(index, 1);
-    setGastos(nuevosGastos);
-  };
+const Contenedor = ()=>{
 
-  return (
-    <div>
-      <Encabezado />
-      <Formulario agregarGasto={agregarGasto} />
-      <Tabla gastos={gastos} eliminarGasto={eliminarGasto} />
-    </div>
-  );
+const [tareas,setTareas] = useState ([""])
+
+const nuevaTarea = (tarea) =>{
+    setTareas([...tareas,tarea])
+
+}
+const eliminarTarea = (tarea) =>{
+    setTareas([tareas.filter (t => t!== tarea)])
 }
 
-export default Contenedor;
+
+
+    return (
+        <div className="contenedor">
+            <h1 className="Header">LISTA DE TAREAS</h1>
+         < Formulario nuevaTarea = {nuevaTarea} />
+         < Tareas tareas={tareas} eliminarTarea={eliminarTarea}/>
+
+        </div>
+    )
+} 
+export default Contenedor ;

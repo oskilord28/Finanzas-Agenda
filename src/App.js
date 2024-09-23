@@ -1,5 +1,5 @@
 import React from 'react';
-import Contenedor from './componentes/Contenedor';
+import Contenedor from './Componentes/Contenedor';
 
 function App() {
   return (
